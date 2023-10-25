@@ -22,17 +22,26 @@ app = Client(
 )
 
 
+def text_slicer(text: str) -> str:
+    if len(text) < 70:
+        return text
+    return f"{text[:67]}..."
+
+
 async def update_bio():
     song = spotify.get_now_playing()
 
-    if song["item"] != None:
+    if song["item"]:
         name = song["item"]["name"]
         artists = ", ".join(artist['name']
                             for artist in song['item']['artists'])
+        
+        bio = f"Now Listening {name} - {artists} on Spotify! 🎧"
 
-        await app.update_profile(bio=f"Now Listening {name} - {artists} on Spotify! 🎧")
     else:
-        await app.update_profile(bio="Not Listening Music Now! 🎧")
+        bio="Not Listening Music Now! 💤"
+
+    await app.update_profile(bio=text_slicer(bio))
 
 
 
