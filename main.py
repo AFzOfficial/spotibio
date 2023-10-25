@@ -30,9 +30,8 @@ async def update_bio():
         artists = ", ".join(artist['name']
                             for artist in song['item']['artists'])
 
-        await app.update_profile(bio=f"Now Listening 
-                                 {name} - {artists} on Spotify! 🎧")
-    await app.update_profile(bio=f"Not Listening Music Now! 🎧")
+        await app.update_profile(bio=f"Now Listening {name} - {artists} on Spotify! 🎧")
+    await app.update_profile(bio="Not Listening Music Now! 🎧")
 
 
 
