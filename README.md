@@ -44,7 +44,7 @@ Create a App in [API Development Tools](https://my.telegram.org/apps) note down 
 
 ### Step 6: Set your Spotify and Telegram Credentials in config.ini
 ```
-nano config.ini
+cp config.ini.example config.ini
 ```
 ### Step 8: Setup venv
 ```bash
