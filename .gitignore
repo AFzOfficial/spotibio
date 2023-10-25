@@ -1,3 +1,4 @@
 .venv
 spotify-bot.session
 __pycache__
+config.ini
