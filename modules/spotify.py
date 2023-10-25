@@ -47,7 +47,7 @@ def get_access_token() -> str:
     return resp.json().get("access_token")
 
 
-def get_now_playing() -> dict:
+def get_now_playing() -> dict | None:
     access_token = get_access_token()
 
     headers = {
@@ -56,5 +56,8 @@ def get_now_playing() -> dict:
 
     resp = requests.get(
         'https://api.spotify.com/v1/me/player/currently-playing', headers=headers)
-
-    return resp.json()
+    
+    if resp.status_code != 204:
+        return resp.json()
+    
+    return None

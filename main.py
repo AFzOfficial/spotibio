@@ -31,7 +31,7 @@ def text_slicer(text: str) -> str:
 async def update_bio():
     song = spotify.get_now_playing()
 
-    if song["item"]:
+    if song:
         name = song["item"]["name"]
         artists = ", ".join(artist['name']
                             for artist in song['item']['artists'])
