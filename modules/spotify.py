@@ -44,7 +44,10 @@ def get_access_token() -> str:
 
     resp = requests.post(
         'https://accounts.spotify.com/api/token', headers=headers, data=data)
-    return resp.json().get("access_token")
+    if resp.status_code == 200:
+        return resp.json().get("access_token")
+
+    return None
 
 
 def get_now_playing() -> dict | None:
